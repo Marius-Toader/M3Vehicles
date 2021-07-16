@@ -4,5 +4,12 @@ public class Licencia {
 	protected int ID;
 	protected String tipoLicencia;
 	protected String nombreCompleto;
-	protected String dataCaducidad;
+	protected String fechaCaducidad;
+	
+	public Licencia(int ID, String tipoLicencia, String nombreCompleto, String fechaCaducidad) {
+		this.ID = ID;
+		this.tipoLicencia = tipoLicencia;
+		this.nombreCompleto = nombreCompleto;
+		this.fechaCaducidad = fechaCaducidad;
+	}
 }

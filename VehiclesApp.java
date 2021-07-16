@@ -3,6 +3,112 @@ package M3;
 import javax.swing.JOptionPane;
 
 public class VehiclesApp {
+	public static void menu() {
+		TitularDeVehiculo titular1 = crearTitular();
+		
+		int n = Integer.parseInt(JOptionPane.showInputDialog("Selecciona una opción: \n"
+															+ "1. Coche \n"
+															+ "2. Moto \n"
+															+ "3. Camión"));
+		switch (n) {
+			case 1:
+			if (titular1.licencia.tipoLicencia.equalsIgnoreCase("Coche")) {
+				Coche coche1 = crearCoche();
+				ruedasTraseras(coche1);
+				ruedasDelanteras(coche1);
+				String conduce = JOptionPane.showInputDialog("El titular va a ser el conductor?");
+				boolean bConduce = conduce.equalsIgnoreCase("si");
+				if (!bConduce) {
+					Conductor conductor1 = crearConductor();
+					if (!conductor1.licencia.tipoLicencia.equalsIgnoreCase("Coche")) {
+						JOptionPane.showMessageDialog(null, "El conductor no tiene la licencia para este vehículo");
+					}
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El titular no tiene la licencia para este vehículo");
+			}
+			
+				break;
+			case 2:
+			if (titular1.licencia.tipoLicencia.equalsIgnoreCase("Moto")) {
+				Moto moto1 = crearMoto();
+				ruedaTrasera(moto1);
+				ruedaDelantera(moto1);
+				String conduce = JOptionPane.showInputDialog("El titular va a ser el conductor?");
+				boolean bConduce = conduce.equalsIgnoreCase("si");
+				if (!bConduce) {
+					Conductor conductor1 = crearConductor();
+					if (!conductor1.licencia.tipoLicencia.equalsIgnoreCase("Moto")) {
+						JOptionPane.showMessageDialog(null, "El conductor no tiene la licencia para este vehículo");
+					}
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El titular no tiene la licencia para este vehículo");
+			}
+				break;
+			case 3:
+			if (titular1.licencia.tipoLicencia.equalsIgnoreCase("Camión")) {
+				Camion camion1 = crearCamion();
+				ruedasTraseras(camion1);
+				ruedasDelanteras(camion1);
+				String conduce = JOptionPane.showInputDialog("El titular va a ser el conductor?");
+				boolean bConduce = conduce.equalsIgnoreCase("si");
+				if (!bConduce) {
+					Conductor conductor1 = crearConductor();
+					if (!conductor1.licencia.tipoLicencia.equalsIgnoreCase("Camión")) {
+						JOptionPane.showMessageDialog(null, "El conductor no tiene la licencia para este vehículo");
+					}
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "El titular no tiene la licencia para este vehículo");
+			}
+				break;
+			default: JOptionPane.showMessageDialog(null, "Opción no válida");
+				break;
+		}
+	}
+	
+	public static TitularDeVehiculo crearTitular() {
+		String nombre = JOptionPane.showInputDialog("Nombre:");
+		String apellidos = JOptionPane.showInputDialog("Apellidos:");
+		String fechaNacimiento = JOptionPane.showInputDialog("Fecha de nacimiento:");
+		String seguro = JOptionPane.showInputDialog("Tiene seguro?");
+		String garajePropio = JOptionPane.showInputDialog("Tiene garaje propio?");
+		boolean bSeguro = seguro.equalsIgnoreCase("si");
+		boolean bGaraje = garajePropio.equalsIgnoreCase("si");
+		
+		int id = Integer.parseInt(JOptionPane.showInputDialog("Número de licencia:"));
+		String tipoLicencia = JOptionPane.showInputDialog("Tipo de licencia:");
+		String nombreCompleto = nombre + " " + apellidos;
+		String fechaCaducidad = JOptionPane.showInputDialog("Fecha de caducidad de la licencia:");
+		
+		TitularDeVehiculo titular = new TitularDeVehiculo(nombre, apellidos, fechaNacimiento, bSeguro, bGaraje);
+		Licencia licencia = new Licencia(id, tipoLicencia, nombreCompleto, fechaCaducidad);
+		titular.setLicencia(licencia);
+		
+		return titular;
+	}
+	
+	public static Conductor crearConductor() {
+		String nombre = JOptionPane.showInputDialog("Nombre:");
+		String apellidos = JOptionPane.showInputDialog("Apellidos:");
+		String fechaNacimiento = JOptionPane.showInputDialog("Fecha de nacimiento:");
+		
+		int id = Integer.parseInt(JOptionPane.showInputDialog("Número de licencia:"));
+		String tipoLicencia = JOptionPane.showInputDialog("Tipo de licencia:");
+		String nombreCompleto = nombre + " " + apellidos;
+		String fechaCaducidad = JOptionPane.showInputDialog("Fecha de caducidad de la licencia:");
+		
+		Conductor conductor = new Conductor(nombre, apellidos, fechaNacimiento);
+		Licencia licencia = new Licencia(id, tipoLicencia, nombreCompleto, fechaCaducidad);
+		conductor.setLicencia(licencia);
+		
+		return conductor;
+	}
+	
 	public static Coche crearCoche() {
 		Coche coche;
 		String matricula = JOptionPane.showInputDialog("Matrícula:");
@@ -82,26 +188,6 @@ public class VehiclesApp {
 	}
 
 	public static void main(String[] args) {
-		int n = Integer.parseInt(JOptionPane.showInputDialog("Selecciona una opción: \n"
-															+ "1. Coche \n"
-															+ "2. Moto \n"
-															+ "3. Camión"));
-		switch (n) {
-			case 1:
-			Coche coche1 = crearCoche();
-			ruedasTraseras(coche1);
-			ruedasDelanteras(coche1);
-				break;
-			case 2:
-			Moto moto1 = crearMoto();
-			ruedaTrasera(moto1);
-			ruedaDelantera(moto1);
-				break;
-			case 3:
-			Camion camion1 = crearCamion();
-			ruedasTraseras(camion1);
-			ruedasDelanteras(camion1);
-			default: JOptionPane.showMessageDialog(null, "Opción no válida");
-		}
+		menu();
 	}
 }
