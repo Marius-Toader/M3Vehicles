@@ -1,16 +1,16 @@
 package M3;
 
-public class Coche {
+public class Moto {
 	protected String matricula;
 	protected String marca;
 	protected String color;
-	protected int numeroRuedas = 4;
-	protected String marcaRuedasTraseras;
-	protected String marcaRuedasDelanteras;
-	protected double diametroRuedasTraseras;
-	protected double diametroRuedasDelanteras;
+	protected int numeroRuedas = 2;
+	protected String marcaRuedaTrasera;
+	protected String marcaRuedaDelantera;
+	protected double diametroRuedaTrasera;
+	protected double diametroRuedaDelantera;
 	
-	public Coche(String matricula, String marca, String color) {
+	public Moto(String matricula, String marca, String color) {
 		this.marca = marca;
 		if (matriculaCorrecta(matricula)) {
 			this.matricula = matricula;
@@ -19,10 +19,10 @@ public class Coche {
 			this.matricula = "Matrícula incorrecta";
 		}
 		this.color = color;
-		this.marcaRuedasTraseras = "";
-		this.marcaRuedasDelanteras = "";
-		this.diametroRuedasDelanteras = 0.0;
-		this.diametroRuedasTraseras = 0.0;
+		this.marcaRuedaTrasera = "";
+		this.marcaRuedaDelantera = "";
+		this.diametroRuedaDelantera = 0.0;
+		this.diametroRuedaTrasera = 0.0;
 	}
 	
 	private boolean matriculaCorrecta(String matricula) {
@@ -90,45 +90,45 @@ public class Coche {
 		this.numeroRuedas = numeroRuedas;
 	}
 
-	public String getMarcaRuedasTraseras() {
-		return marcaRuedasTraseras;
+	public String getMarcaRuedaTrasera() {
+		return marcaRuedaTrasera;
 	}
 
-	public void setMarcaRuedasTraseras(String marcaRuedasTraseras) {
-		this.marcaRuedasTraseras = marcaRuedasTraseras;
+	public void setMarcaRuedaTrasera(String marcaRuedaTrasera) {
+		this.marcaRuedaTrasera = marcaRuedaTrasera;
 	}
 
-	public String getMarcaRuedasDelanteras() {
-		return marcaRuedasDelanteras;
+	public String getMarcaRuedaDelantera() {
+		return marcaRuedaDelantera;
 	}
 
-	public void setMarcaRuedasDelanteras(String marcaRuedasDelanteras) {
-		this.marcaRuedasDelanteras = marcaRuedasDelanteras;
+	public void setMarcaRuedaDelantera(String marcaRuedaDelantera) {
+		this.marcaRuedaDelantera = marcaRuedaDelantera;
 	}
 
-	public double getDiametroRuedasTraseras() {
-		return diametroRuedasTraseras;
+	public double getDiametroRuedaTrasera() {
+		return diametroRuedaTrasera;
 	}
 
-	public void setDiametroRuedasTraseras(double diametroRuedasTraseras) {
-		if (diametroCorrecto(diametroRuedasTraseras)) {
-			this.diametroRuedasTraseras = diametroRuedasTraseras;
+	public void setDiametroRuedaTrasera(double diametroRuedaTrasera) {
+		if (diametroCorrecto(diametroRuedaTrasera)) {
+			this.diametroRuedaTrasera = diametroRuedaTrasera;
 		}
 		else {
-			this.diametroRuedasTraseras = 0.0;
+			this.diametroRuedaTrasera = 0.0;
 		}
 	}
 
-	public double getDiametroRuedasDelanteras() {
-		return diametroRuedasDelanteras;
+	public double getDiametroRuedaDelantera() {
+		return diametroRuedaDelantera;
 	}
 
-	public void setDiametroRuedasDelanteras(double diametroRuedasDelanteras) {
-		if (diametroCorrecto(diametroRuedasDelanteras)) {
-			this.diametroRuedasDelanteras = diametroRuedasDelanteras;
+	public void setDiametroRuedaDelantera(double diametroRuedaDelantera) {
+		if (diametroCorrecto(diametroRuedaDelantera)) {
+			this.diametroRuedaDelantera = diametroRuedaDelantera;
 		}
 		else {
-			this.diametroRuedasDelanteras = 0.0;
+			this.diametroRuedaDelantera = 0.0;
 		}
 	}
 }
