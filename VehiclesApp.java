@@ -39,6 +39,14 @@ public class VehiclesApp {
 		moto.setDiametroRuedaTrasera(diametroTrasera);
 	}
 	
+	public static void ruedasTraseras(Camion camion) {
+		String marcaTraseras = JOptionPane.showInputDialog("Marca de las ruedas traseras:");
+		double diametroTraseras = Double.parseDouble(JOptionPane.showInputDialog("Diámetro de las ruedas traseras:"));
+		
+		camion.setMarcaRuedasTraseras(marcaTraseras);
+		camion.setDiametroRuedasTraseras(diametroTraseras);
+	}
+	
 	public static void ruedasDelanteras(Coche coche) {
 		String marcaDelanteras = JOptionPane.showInputDialog("Marca de las ruedas delanteras:");
 		double diametroDelanteras = Double.parseDouble(JOptionPane.showInputDialog("Diámetro de las ruedas delanteras:"));
@@ -54,11 +62,30 @@ public class VehiclesApp {
 		moto.setMarcaRuedaTrasera(marcaDelantera);
 		moto.setDiametroRuedaTrasera(diametroDelantera);
 	}
+	
+	public static void ruedasDelanteras(Camion camion) {
+		String marcaDelanteras = JOptionPane.showInputDialog("Marca de las ruedas delanteras:");
+		double diametroDelanteras = Double.parseDouble(JOptionPane.showInputDialog("Diámetro de las ruedas delanteras:"));
+		
+		camion.setMarcaRuedasDelanteras(marcaDelanteras);
+		camion.setDiametroRuedasDelanteras(diametroDelanteras);
+	}
+	
+	public static Camion crearCamion() {
+		Camion camion;
+		String matricula = JOptionPane.showInputDialog("Matrícula:");
+		String marca = JOptionPane.showInputDialog("Marca:");
+		String color = JOptionPane.showInputDialog("Color:");
+		camion = new Camion(matricula, marca, color);
+		
+		return camion;
+	}
 
 	public static void main(String[] args) {
 		int n = Integer.parseInt(JOptionPane.showInputDialog("Selecciona una opción: \n"
-															+ "1. Coche"
-															+ "2. Moto"));
+															+ "1. Coche \n"
+															+ "2. Moto \n"
+															+ "3. Camión"));
 		switch (n) {
 			case 1:
 			Coche coche1 = crearCoche();
@@ -70,9 +97,11 @@ public class VehiclesApp {
 			ruedaTrasera(moto1);
 			ruedaDelantera(moto1);
 				break;
+			case 3:
+			Camion camion1 = crearCamion();
+			ruedasTraseras(camion1);
+			ruedasDelanteras(camion1);
 			default: JOptionPane.showMessageDialog(null, "Opción no válida");
 		}
-		
-		
 	}
 }
