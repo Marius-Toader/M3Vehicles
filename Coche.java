@@ -12,12 +12,50 @@ public class Coche {
 	
 	public Coche(String matricula, String marca, String color) {
 		this.marca = marca;
-		this.matricula = matricula;
+		if (matriculaCorrecta(matricula)) {
+			this.matricula = matricula;
+		}
+		else {
+			this.matricula = "Matrícula incorrecta";
+		}
 		this.color = color;
 		this.marcaRuedasTraseras = "";
 		this.marcaRuedasDelanteras = "";
 		this.diametroRuedasDelanteras = 0.0;
 		this.diametroRuedasTraseras = 0.0;
+	}
+	
+	private boolean matriculaCorrecta(String matricula) {
+		boolean valido;
+		int contadorLetras = 0, contadorNumeros = 0;
+		for (int i = 0; i < matricula.length(); i++) {
+			if (matricula.charAt(i) >='A' && matricula.charAt(i) <= 'Z') {
+				contadorLetras++;
+			}
+			else if (matricula.charAt(i) >= 0 && matricula.charAt(i) <= 9) {
+				contadorNumeros++;
+			}
+		}
+		if (((contadorLetras == 2) || (contadorLetras == 3)) && contadorNumeros == 4) {
+			valido = true;
+		}
+		else {
+			valido = false;
+		}
+		
+		return valido;
+	}
+	
+	private boolean diametroCorrecto(double diametro) {
+		boolean valido;
+		if (diametro > 0.4 && diametro < 4) {
+			valido = true;
+		}
+		else {
+			valido = false;
+		}
+		
+		return valido;
 	}
 
 	public String getMatricula() {
@@ -73,7 +111,12 @@ public class Coche {
 	}
 
 	public void setDiametroRuedasTraseras(double diametroRuedasTraseras) {
-		this.diametroRuedasTraseras = diametroRuedasTraseras;
+		if (diametroCorrecto(diametroRuedasTraseras)) {
+			this.diametroRuedasTraseras = diametroRuedasTraseras;
+		}
+		else {
+			this.diametroRuedasTraseras = 0.0;
+		}
 	}
 
 	public double getDiametroRuedasDelanteras() {
@@ -81,8 +124,11 @@ public class Coche {
 	}
 
 	public void setDiametroRuedasDelanteras(double diametroRuedasDelanteras) {
-		this.diametroRuedasDelanteras = diametroRuedasDelanteras;
+		if (diametroCorrecto(diametroRuedasDelanteras)) {
+			this.diametroRuedasDelanteras = diametroRuedasDelanteras;
+		}
+		else {
+			this.diametroRuedasDelanteras = 0.0;
+		}
 	}
-	
-	
 }

@@ -3,24 +3,37 @@ package M3;
 import javax.swing.JOptionPane;
 
 public class VehiclesApp {
-
-	public static void main(String[] args) {
+	public static Coche crearCoche() {
+		Coche coche;
 		String matricula = JOptionPane.showInputDialog("Matrícula:");
 		String marca = JOptionPane.showInputDialog("Marca:");
 		String color = JOptionPane.showInputDialog("Color:");
+		coche = new Coche(matricula, marca, color);
 		
-		Coche coche1 = new Coche(matricula, marca, color);
-		
+		return coche;
+	}
+	
+	public static void ruedasTraseras(Coche coche) {
 		String marcaTraseras = JOptionPane.showInputDialog("Marca de las ruedas traseras:");
 		double diametroTraseras = Double.parseDouble(JOptionPane.showInputDialog("Diámetro de las ruedas traseras:"));
 		
-		coche1.setMarcaRuedasTraseras(marcaTraseras);
-		coche1.setDiametroRuedasTraseras(diametroTraseras);
-		
+		coche.setMarcaRuedasTraseras(marcaTraseras);
+		coche.setDiametroRuedasTraseras(diametroTraseras);
+	}
+	
+	public static void ruedasDelanteras(Coche coche) {
 		String marcaDelanteras = JOptionPane.showInputDialog("Marca de las ruedas delanteras:");
 		double diametroDelanteras = Double.parseDouble(JOptionPane.showInputDialog("Diámetro de las ruedas delanteras:"));
 		
-		coche1.setMarcaRuedasDelanteras(marcaDelanteras);
-		coche1.setDiametroRuedasDelanteras(diametroDelanteras);
+		coche.setMarcaRuedasDelanteras(marcaDelanteras);
+		coche.setDiametroRuedasDelanteras(diametroDelanteras);
+	}
+
+	public static void main(String[] args) {
+		Coche coche1 = crearCoche();
+		
+		ruedasTraseras(coche1);
+		
+		ruedasDelanteras(coche1);
 	}
 }
