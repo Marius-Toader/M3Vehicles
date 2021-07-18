@@ -6,6 +6,7 @@ public class Licencia {
 	protected String nombreCompleto;
 	protected String fechaCaducidad;
 	
+	//Constructor de licencias
 	public Licencia(int ID, String tipoLicencia, String nombreCompleto, String fechaCaducidad) {
 		this.ID = ID;
 		this.tipoLicencia = tipoLicencia;

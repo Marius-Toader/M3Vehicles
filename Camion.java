@@ -1,15 +1,13 @@
 package M3;
 
-public class Camion {
-	protected String matricula;
-	protected String marca;
-	protected String color;
+public class Camion extends Vehiculo {
 	protected int numeroRuedas = 4;
 	protected String marcaRuedasTraseras;
 	protected String marcaRuedasDelanteras;
 	protected double diametroRuedasTraseras;
 	protected double diametroRuedasDelanteras;
 	
+	//Constructor de camión
 	public Camion(String matricula, String marca, String color) {
 		this.marca = marca;
 		if (matriculaCorrecta(matricula)) {
@@ -25,6 +23,7 @@ public class Camion {
 		this.diametroRuedasTraseras = 0.0;
 	}
 	
+	//Comprobación de la matrícula
 	private boolean matriculaCorrecta(String matricula) {
 		boolean valido;
 		int contadorLetras = 0, contadorNumeros = 0;
@@ -46,6 +45,7 @@ public class Camion {
 		return valido;
 	}
 	
+	//Comprobación del diámetro de las ruedas
 	private boolean diametroCorrecto(double diametro) {
 		boolean valido;
 		if (diametro > 0.4 && diametro < 4) {
@@ -58,6 +58,7 @@ public class Camion {
 		return valido;
 	}
 
+	//Getters y setters
 	public String getMatricula() {
 		return matricula;
 	}
@@ -130,5 +131,9 @@ public class Camion {
 		else {
 			this.diametroRuedasDelanteras = 0.0;
 		}
+	}
+	
+	public void setTitular(TitularDeVehiculo titular) {
+		this.titular = titular;
 	}
 }
